@@ -1,0 +1,23 @@
+1)  Open the current directory in the terminal and run the command "sudo mn"
+
+2)  we will get the mininet interface type the command "xterm h1 h2" which 
+    will open the xterm terminals
+
+3)  Set the Bandwidth, Propagationm Delay, packet Loss using the commands
+    execute from xterm h1: 
+    sudo tc qdisc add dev h1-eth0 root netem rate 10Mbit limit 100
+    sudo tc qdisc change dev h1-eth0 root netem delay 5ms
+    sudo tc qdisc change dev h1-eth0 root netem loss 5%
+
+    execute from xterm h2:
+    sudo tc qdisc add dev h2-eth0 root netem rate 10Mbit limit 100
+    sudo tc qdisc change dev h2-eth0 root netem delay 5ms
+    sudo tc qdisc change dev h2-eth0 root netem loss 5%
+
+4) Now in the xterm h2 enter the command "python3 CS20BTECH11020_receiverStopWait"
+
+5) Now in the xterm h1 enter the command "python3 CS20BTECH11020_senderStopWait"
+
+6) We will get the out in the same directory ans "output.jpg"
+
+7) Also we will get the throughput values and also number of retransmission packets in the xterm h2 terminal
